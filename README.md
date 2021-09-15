@@ -22,7 +22,7 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
 
 ## Testing
 
-You will need to have the environment variables MONGO_URI and SECRET_COOKIE_PASSWORD set in the .env.development.local file. Then you can run the following commands
+You will need to have the environment variables MONGO_URI and SECRET_COOKIE_PASSWORD set in the .env.development.local file. These enviroment variables are required for github workflow testing too. Then you can run the following commands
 
 - Jest
 
@@ -42,3 +42,4 @@ yarn e2e
 
 ### Todo
 - Clear test database after test runs
+- Fix e2e in github actions
