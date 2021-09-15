@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import toast, { Toaster } from 'react-hot-toast';
 import SubmitButton from '../components/SubmitButton';
 import { LogoutIcon } from '@heroicons/react/solid';
-
+import Greeting from '../components/Greeting';
 
 const Profile = ({ user }) => {
   const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ const Profile = ({ user }) => {
     <>
     <Toaster />
     <div className="flex items-center justify-center flex-col min-h-[100vh]">
-      <div>Hello {user?.firstName} {user?.lastName}!</div>
+      <Greeting text={`Hello ${user?.firstName} ${user?.lastName}!`} />
       <SubmitButton label="Sign out" onClick={signOut} loading={loading} className="max-w-[150px] mt-5" >
         <LogoutIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" />
       </SubmitButton>

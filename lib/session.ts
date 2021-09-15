@@ -9,7 +9,7 @@ export type NextIronHandler = (
 
 const withSession = (handler: NextIronHandler) =>
   withIronSession(handler, {
-    password: process.env.SECRET_COOKIE_PASSWORD,
+    password: process.env.SECRET_COOKIE_PASSWORD || '',
     cookieName: "nis",
     cookieOptions: {
       secure: process.env.NODE_ENV === "production",
