@@ -42,4 +42,3 @@ yarn e2e
 
 ### Todo
 - Clear test database after test runs
-- Fix e2e in github actions
