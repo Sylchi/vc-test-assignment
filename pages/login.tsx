@@ -105,7 +105,7 @@ const Login = () => {
           </div>
           {error && <div className="text-red-600 text-center mt-5">Invalid credentials, please try again.</div>}
           <div>
-            <SubmitButton label="Sign in" icon={LockClosedIcon} onClick={() => submit(state, setLoading, router, setError)} loading={loading} />
+            <SubmitButton label="Sign in" icon={LockClosedIcon} onClick={submit} loading={loading} />
           </div>
         </form>
       </div>

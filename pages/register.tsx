@@ -8,8 +8,6 @@ import withSession from '../lib/session';
 import SubmitButton from '../components/SubmitButton';
 import type { NextRouter } from 'next/router';
 
-
-
 const Register = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>();
@@ -135,7 +133,7 @@ const Register = () => {
           </div>
           {error && <div className="text-red-600 text-center mt-5">{error}</div>}
           <div>
-            <SubmitButton label="Sign up" onClick={() => submit(state, setLoading, router, setError)} icon={UserIcon} loading={loading} />
+            <SubmitButton label="Sign up" onClick={submit} icon={UserIcon} loading={loading} />
           </div>
         </form>
       </div>
