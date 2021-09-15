@@ -5,7 +5,7 @@ export type NextIronRequest = NextApiRequest & { session: Session };
 export type NextIronHandler = (
   req: NextIronRequest,
   res: NextApiResponse,
-) => void | Promise<void>;
+) => any;
 
 const withSession = (handler: NextIronHandler) =>
   withIronSession(handler, {

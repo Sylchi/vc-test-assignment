@@ -34,14 +34,14 @@ const Profile = ({ user: { firstName, lastName, email } }) => {
 
 export default Profile;
 
-export const getServerSideProps = withSession(async ({ req, res }) => {
+//@ts-ignore
+export const getServerSideProps = withSession(({ req, res }) => {
   const user = req.session.get("user");
 
   if (user === undefined) {
     res.setHeader("location", "/login");
     res.statusCode = 302;
     res.end();
-    return { props: {} };
   }
 
   return {

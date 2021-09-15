@@ -5,7 +5,6 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import withSession from '../lib/session';
 import SubmitButton from '../components/SubmitButton';
 import toast, { Toaster } from 'react-hot-toast';
-import type { userType } from './api/user';
 
 type loginFieldName = 'email' | 'password'
 
@@ -115,17 +114,13 @@ const Login = () => {
 
 export default Login;
 
-export const getServerSideProps = withSession(async ({ req, res }) => {
+//@ts-ignore
+export const getServerSideProps = withSession(({ req, res }) => {
   const user = req.session.get("user");
 
   if (user !== undefined) {
     res.setHeader("location", "/profile");
     res.statusCode = 302;
     res.end();
-    return { props: {} };
   }
-
-  return {
-    props: {},
-  };
 });

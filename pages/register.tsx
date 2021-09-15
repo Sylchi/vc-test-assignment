@@ -143,17 +143,13 @@ const Register = () => {
 
 export default Register;
 
-export const getServerSideProps = withSession(async ({ req, res }) => {
+//@ts-ignore
+export const getServerSideProps = withSession(({ req, res }) => {
   const user = req.session.get("user");
 
   if (user !== undefined) {
     res.setHeader("location", "/profile");
     res.statusCode = 302;
     res.end();
-    return { props: {} };
   }
-
-  return {
-    props: {},
-  };
 });
