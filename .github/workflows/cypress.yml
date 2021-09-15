@@ -15,3 +15,6 @@ jobs:
           record: false
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          SECRET_COOKIE_PASSWORD: ${{ secrets.SECRET_COOKIE_PASSWORD }}
+
