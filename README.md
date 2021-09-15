@@ -32,10 +32,13 @@ npm run test
 yarn test
 ```
 
--E2E
+- E2E
 
 ```bash
 npm run e2e
 # or
 yarn e2e
 ```
+
+### Todo
+- Clear test database after test runs
