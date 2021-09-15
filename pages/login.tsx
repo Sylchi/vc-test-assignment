@@ -26,19 +26,18 @@ const Login = () => {
     setLoading(true);
     setError(false);
     try{
-      await fetch('/api/login', {
+      const { success } = await fetch('/api/login', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
         },
         body: JSON.stringify(state)
-      }).then(res => res.json()).then(data => {
-        if(data.success === true) return router.push('/');
-        else {
-          setError(true);
-          setLoading(false);
-        }
-      })
+      }).then(res => res.json());
+      if(success) return router.push('/');
+      else {
+        setError(true);
+        setLoading(false);
+      }
     } catch (err) {
       toast.error("Something went wrong");
       setLoading(false); 

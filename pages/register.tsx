@@ -27,16 +27,15 @@ const Register = () => {
   const submit = async () => {
     setLoading(true);
     setError(null);
-    const registrationResult = await fetch('/api/register', {
+    const { isLoggedIn, message } = await fetch('/api/register', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
       body: JSON.stringify(state)
-    }).then(res => res.json()).then(data => {
-      if(data.isLoggedIn) router.push('/');
-      else if(data.message) setError(data.message);
-    });
+    }).then(res => res.json());
+    if(isLoggedIn) router.push('/');
+    else if(message) setError(message);
     setLoading(false);
   }
   return (

@@ -48,7 +48,9 @@ describe('We can register an account', () => {
 
   it('Types a correct password and succeeds', () => { 
     cy.get('#password').focus().clear().type(password)
+    cy.intercept('/api/register').as('registerPost')
     cy.get('button').click()
+    cy.wait('@registerPost').its('request.url').should('include', 'register')
     cy.location('pathname').should('eq', '/')
     cy.contains(`Hello ${firstName} ${lastName}`)
   })
@@ -80,7 +82,9 @@ describe('We can log in with the user that we created', () => {
   });
 
   it('Manages to log in', () => {
+    cy.intercept('/api/login').as('loginPost')
     cy.get('button').click()
+    cy.wait('@loginPost').its('request.url').should('include', 'login')
     cy.contains(`Hello ${firstName} ${lastName}`)
   })
 });
