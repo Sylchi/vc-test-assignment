@@ -34,7 +34,7 @@ const Register = () => {
       },
       body: JSON.stringify(state)
     }).then(res => res.json()).then(data => {
-      if(data.isLoggedIn) router.push('/profile');
+      if(data.isLoggedIn) router.push('/');
       else if(data.message) setError(data.message);
     });
     setLoading(false);
@@ -133,7 +133,9 @@ const Register = () => {
           </div>
           {error && <div className="text-red-600 text-center mt-5">{error}</div>}
           <div>
-            <SubmitButton label="Sign up" onClick={submit} icon={UserIcon} loading={loading} />
+            <SubmitButton label="Sign up" onClick={submit} loading={loading} >
+              <UserIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" />
+            </SubmitButton>
           </div>
         </form>
       </div>
@@ -148,8 +150,10 @@ export const getServerSideProps = withSession(({ req, res }) => {
   const user = req.session.get("user");
 
   if (user !== undefined) {
-    res.setHeader("location", "/profile");
+    res.setHeader("location", "/");
     res.statusCode = 302;
     res.end();
   }
+
+  return { props: {} }
 });

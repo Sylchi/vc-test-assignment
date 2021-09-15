@@ -33,7 +33,7 @@ const Login = () => {
         },
         body: JSON.stringify(state)
       }).then(res => res.json()).then(data => {
-        if(data.success === true) return router.push('/profile');
+        if(data.success === true) return router.push('/');
         else {
           setError(true);
           setLoading(false);
@@ -104,7 +104,9 @@ const Login = () => {
           </div>
           {error && <div className="text-red-600 text-center mt-5">Invalid credentials, please try again.</div>}
           <div>
-            <SubmitButton label="Sign in" icon={LockClosedIcon} onClick={submit} loading={loading} />
+            <SubmitButton label="Sign in" onClick={submit} loading={loading} >
+              <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" />
+            </SubmitButton>
           </div>
         </form>
       </div>
@@ -119,8 +121,10 @@ export const getServerSideProps = withSession(({ req, res }) => {
   const user = req.session.get("user");
 
   if (user !== undefined) {
-    res.setHeader("location", "/profile");
+    res.setHeader("location", "/");
     res.statusCode = 302;
     res.end();
   }
+
+  return { props: {} }
 });
