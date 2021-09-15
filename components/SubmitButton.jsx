@@ -2,7 +2,7 @@
 import Loader from 'react-loader-spinner';
 import PropTypes from "prop-types";
 
-const SubmitButton = ({ label, loading, icon, onClick, className, children }) => {
+const SubmitButton = ({ label, loading, onClick, className, children }) => {
   return (
     <button
       type="submit"
@@ -30,7 +30,7 @@ export default SubmitButton;
 SubmitButton.propTypes = {
   label: PropTypes.string.isRequired,
   loading: PropTypes.bool,
-  icon: PropTypes.func,
   onClick: PropTypes.func.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  children: PropTypes.any
 };
