@@ -97,11 +97,11 @@ const Register = () => {
               />
             </div>
             <div>
-              <label htmlFor="email-address" className="sr-only">
+              <label htmlFor="email" className="sr-only">
                 Email address
               </label>
               <input
-                id="email-address"
+                id="email"
                 name="email"
                 type="email"
                 pattern={regex['email']}
@@ -129,6 +129,7 @@ const Register = () => {
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
               />
+              <div className="ml-1 mt-1 text-xs text-gray-600">8 characters minimum</div>
             </div>
           </div>
           {error && <div className="text-red-600 text-center mt-5">{error}</div>}
