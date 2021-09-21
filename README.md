@@ -42,3 +42,6 @@ yarn e2e
 
 ### Todo
 - Clear test database after test runs
+- Make brute forcing harder by limiting login attempts
+- Add captcha to registration page
+- Index users by email to improve database performance
